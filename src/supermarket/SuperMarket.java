@@ -1,7 +1,7 @@
 package supermarket;
 
 import discountRules.DiscountFactory;
-import discountRules.SalesRule;
+import discountRules.SaleRule;
 
 import java.util.*;
 
@@ -33,7 +33,7 @@ public class SuperMarket {
         return productById.get(id);
     }
 
-    public void addDiscount(SalesRule discount) {
+    public void addDiscount(SaleRule discount) {
         discountFactory.addSalesRule(discount);
     }
 

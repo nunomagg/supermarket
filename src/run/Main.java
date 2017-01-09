@@ -1,9 +1,9 @@
 package run;
 
-import discountRules.BuySetDontPayLowest;
+import discountRules.BuySetDontPayCheapest;
 import discountRules.BuyXForSpecialPrice;
-import discountRules.BuyXGetOtherForFree;
-import discountRules.BuyXGetYForFree;
+import discountRules.BuyXGetAnotherForFree;
+import discountRules.BuyXGetYOtherItemsForFree;
 import supermarket.Product;
 import supermarket.ShoppingCart;
 import supermarket.SuperMarket;
@@ -34,17 +34,17 @@ public class Main {
 		applicable.add(market.getProduct(2));
 
 		//Regra 1
-		market.addDiscount(new BuyXGetOtherForFree(market.getProduct(0),3,1));
+		market.addDiscount(new BuyXGetAnotherForFree(market.getProduct(0),3,1));
 		market.addDiscount(new BuyXForSpecialPrice(market.getProduct(0),2,1,50));
 
 		//Regra 2
 		market.addDiscount(new BuyXForSpecialPrice(market.getProduct(4),3,1, 50));
 
 		//- buy 3 (in a set of items) and the cheapest is free
-		market.addDiscount(new BuySetDontPayLowest(applicable));
+		market.addDiscount(new BuySetDontPayCheapest(applicable));
 
-		//for each mouse get 2 HATS!
-		market.addDiscount(new BuyXGetYForFree(market.getProduct(5),1,market.getProduct(3),2));
+		//for each mouse get 2 CHERRY!
+		market.addDiscount(new BuyXGetYOtherItemsForFree(market.getProduct(5),1,market.getProduct(3),2));
 
 		ShoppingCart cart = new ShoppingCart();
 		cart.addToCart(market.getProduct(0),3);

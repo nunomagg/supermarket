@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * Created by Nuno Maggiolly on 08-01-2017.
  */
-public abstract class AbstractMultipleSaleRule implements SalesRule {
+public abstract class AbstractMultipleSaleRule implements SaleRule {
 
     protected Set<Product> applicableProducts;
     protected String salesText = "";

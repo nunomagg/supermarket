@@ -12,18 +12,18 @@ import java.util.Map;
  * Created by Nuno Maggiolly on 08-01-2017.
  */
 public class DiscountFactory {
-    private List<SalesRule> salesRules;
+    private List<SaleRule> salesRules;
 
     public DiscountFactory() {
         salesRules = new ArrayList<>();
     }
 
     /**
-     * Adds a SalesRule to the existing sales
+     * Adds a SaleRule to the existing sales
      *
      * @param discount
      */
-    public void addSalesRule(SalesRule discount){
+    public void addSalesRule(SaleRule discount){
         if (discount!=null) {
             salesRules.add(discount);
             orderDiscountRules();
@@ -45,7 +45,7 @@ public class DiscountFactory {
 
         List<Item> discountedProducts = new ArrayList<>();
 
-        for (SalesRule discountRule : salesRules) {
+        for (SaleRule discountRule : salesRules) {
             discountedProducts.addAll(discountRule.calculatePrice(checkoutItems));
         }
 

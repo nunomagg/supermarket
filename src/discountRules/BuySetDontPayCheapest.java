@@ -8,11 +8,11 @@ import java.util.*;
 /**
  * Created by Nuno Maggiolly on 08-01-2017.
  */
-public class BuySetDontPayLowest extends AbstractMultipleSaleRule {
+public class BuySetDontPayCheapest extends AbstractMultipleSaleRule {
 
     private static final boolean IS_CUMULATIVE = false;
 
-    public BuySetDontPayLowest(Set<Product> applicableItems) {
+    public BuySetDontPayCheapest(Set<Product> applicableItems) {
         this.applicableProducts = applicableItems;
     }
 

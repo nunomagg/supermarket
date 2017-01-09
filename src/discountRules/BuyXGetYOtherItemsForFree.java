@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Created by Nuno Maggiolly on 08-01-2017.
  */
-public class BuyXGetYForFree extends AbstractSingleSaleRule {
+public class BuyXGetYOtherItemsForFree extends AbstractSingleSaleRule {
     private static final boolean IS_CUMULATIVE = false;
     private static final int DISCOUNT_PERCENTAGE = 100;
 
@@ -18,7 +18,7 @@ public class BuyXGetYForFree extends AbstractSingleSaleRule {
     protected Product freeProduct;
     protected int freeUnits;
 
-    public BuyXGetYForFree(Product product, int buyUnits,Product freeProduct, int freeUnits) {
+    public BuyXGetYOtherItemsForFree(Product product, int buyUnits, Product freeProduct, int freeUnits) {
         this.applicableProduct = product;
         this.buyUnits = buyUnits;
         this.freeProduct = freeProduct;
