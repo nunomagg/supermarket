@@ -5,7 +5,7 @@ import supermarket.Product;
 /**
  * Created by Nuno Maggiolly on 08-01-2017.
  */
-public abstract class AbstractSingleSaleRule implements SaleRule {
+public abstract class AbstractSingleSaleRule extends AbstractSaleRule {
 
     protected Product applicableProduct;
     protected String salesText = "";

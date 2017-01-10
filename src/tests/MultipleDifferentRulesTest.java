@@ -83,6 +83,7 @@ public class MultipleDifferentRulesTest extends SuperMarketTest {
         assertEquals(11.0, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -140,6 +141,7 @@ public class MultipleDifferentRulesTest extends SuperMarketTest {
         assertEquals(12.0, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -212,7 +214,7 @@ public class MultipleDifferentRulesTest extends SuperMarketTest {
 
         List<Item> items = market.applyDiscount(cart);
 
-        testProductsQuantities(items);
+        ShoppingCartTests.testProductsQuantities(items);
 
         market.printCart(items);
     }

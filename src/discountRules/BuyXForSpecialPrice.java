@@ -1,6 +1,5 @@
 package discountRules;
 
-import run.Utils;
 import supermarket.Item;
 import supermarket.Product;
 
@@ -46,7 +45,7 @@ public class BuyXForSpecialPrice extends AbstractSingleSaleRule {
                 int quantityToRemove = (int) (item.getAvailableQuantity() * (((float)discountedUnits)/ ((float) buyUnits)));
                 int nrDiscountedProducts = Math.floorDiv(item.getAvailableQuantity(), buyUnits);
 
-                item.removeQuantityOnDiscount(quantityToRemove, nrDiscountedProducts * buyUnits);
+                removeItemQuantityOnDiscount(items,item,quantityToRemove, nrDiscountedProducts * buyUnits);
                 productsWithDiscount.add(new Item(item.getProduct(), nrDiscountedProducts * discountedUnits, specialPricePercentage));
             }
         }

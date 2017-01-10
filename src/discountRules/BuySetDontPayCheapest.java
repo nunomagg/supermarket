@@ -25,7 +25,7 @@ public class BuySetDontPayCheapest extends AbstractMultipleSaleRule {
         List<Item> productsWithDiscount = new ArrayList<>();
 
         int minQuantityFound = Integer.MAX_VALUE;
-        Product cheapestItem = null;
+        Product cheapestProduct = null;
         int foundItems = 0;
 
         //check if all applicable products are in the shopping cart
@@ -36,8 +36,8 @@ public class BuySetDontPayCheapest extends AbstractMultipleSaleRule {
                     foundItems++;
                     minQuantityFound = item.getAvailableQuantity() < minQuantityFound ? item.getAvailableQuantity() : minQuantityFound;
                     //check if current product is the cheapest. if so, save reference
-                    if (cheapestItem == null || product.getPrice() < cheapestItem.getPrice()) {
-                        cheapestItem = product;
+                    if (cheapestProduct == null || product.getPrice() < cheapestProduct.getPrice()) {
+                        cheapestProduct = product;
                     }
                 }else {
                     //has already been used in a discount or this discount is not cumulative
@@ -54,14 +54,16 @@ public class BuySetDontPayCheapest extends AbstractMultipleSaleRule {
                 and set min quantities of the other items as used in a discount
          */
         if (foundItems == applicableProducts.size()){
-            items.get(cheapestItem).removeQuantityOnDiscount(minQuantityFound,minQuantityFound);
+            Item cheapestItem = items.get(cheapestProduct);
+            removeItemQuantityOnDiscount(items, cheapestItem ,minQuantityFound,minQuantityFound);
+
             for (Product prod : applicableProducts) {
-                if (!prod.equals(cheapestItem)){
+                if (!prod.equals(cheapestProduct)){
                     items.get(prod).applyDiscountTo(minQuantityFound);
                 }
             }
 
-            productsWithDiscount.add(new Item(cheapestItem,minQuantityFound,100));
+            productsWithDiscount.add(new Item(cheapestProduct,minQuantityFound,100));
         }
 
         return productsWithDiscount;

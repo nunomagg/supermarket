@@ -50,6 +50,7 @@ public class BuyXGetFreeUnitsTest extends SuperMarketTest{
 
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong full price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -121,6 +122,7 @@ public class BuyXGetFreeUnitsTest extends SuperMarketTest{
 
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong full price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -157,6 +159,7 @@ public class BuyXGetFreeUnitsTest extends SuperMarketTest{
 
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong full price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 }

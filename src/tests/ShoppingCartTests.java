@@ -5,6 +5,7 @@ import supermarket.Item;
 import supermarket.Product;
 import supermarket.ShoppingCart;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -163,4 +164,19 @@ public class ShoppingCartTests extends SuperMarketTest{
         market.printCart(cart.getItemsInCart().values());
     }
 
+
+    /**
+     * There shouldn't be any product with 0 quantity
+     */
+    @Test
+    public static void testProductsQuantities(List<Item> items){
+
+        if (items!= null && items.size()>0){
+            for (Item item : items) {
+                assertTrue(item.getQuantity()>0,
+                        "Item with product "+item.getProduct().getName()+ " at "+item.calculatePrice()+" should not exist with 0 quantity");
+            }
+        }
+
+    }
 }

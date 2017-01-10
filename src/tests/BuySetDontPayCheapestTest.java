@@ -75,6 +75,7 @@ public class BuySetDontPayCheapestTest extends SuperMarketTest
         assertEquals(67.0, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -140,6 +141,7 @@ public class BuySetDontPayCheapestTest extends SuperMarketTest
         assertEquals(127.0, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -326,6 +328,7 @@ public class BuySetDontPayCheapestTest extends SuperMarketTest
         assertEquals(411.0, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 }

@@ -55,6 +55,7 @@ public class BuyXForSpecialPriceTest extends SuperMarketTest {
         assertEquals(2*5 + 2*2.5, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -99,6 +100,7 @@ public class BuyXForSpecialPriceTest extends SuperMarketTest {
         assertEquals(55.0, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 }

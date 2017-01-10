@@ -58,6 +58,7 @@ public class BuyXGetOtherItemsFFTest extends SuperMarketTest{
         //assertEquals(15*3, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
@@ -101,6 +102,7 @@ public class BuyXGetOtherItemsFFTest extends SuperMarketTest{
 
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
+        ShoppingCartTests.testProductsQuantities(itemsInCart);
         market.printCart(itemsInCart);
     }
 
