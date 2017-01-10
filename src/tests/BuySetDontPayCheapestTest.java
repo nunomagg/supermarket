@@ -279,7 +279,7 @@ public class BuySetDontPayCheapestTest extends SuperMarketTest
                 else {
                     //todo: change this to use other assert
                     assertEquals(false, true,
-                            "There shouldn't other a free item in the cart ");
+                            "There shouldn't another type of free item in the cart ");
                 }
             }
             else if (WATERMELON.equals(item.getProduct()) ){

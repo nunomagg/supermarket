@@ -40,10 +40,20 @@ public class Item {
         originalQuantity = quantity;
     }
 
+    /**
+     * This method should be used when the removal of a quantity was due to a discount on the item.
+     * @param quantity
+     * @param usedUnitsInDiscount
+     */
     public void removeQuantityOnDiscount(int quantity, int usedUnitsInDiscount ){
         this.quantity = this.quantity - quantity;
         this.usedUnitsInDiscount += usedUnitsInDiscount;
     }
+
+    /**
+     * Set quantity of this item as a Already used quantity in a discount/sale
+     * @param quantity
+     */
     public void applyDiscountTo(int quantity){
         usedUnitsInDiscount += quantity;
     }

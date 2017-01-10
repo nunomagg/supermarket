@@ -46,14 +46,9 @@ public class SuperMarketTest {
         return market;
     }
 
-
-
-
     //comprar 3 mas em que 2 são de outro tipo de produto
     // 3 regras diferentes seguidas
-    // um em que tem a regra aplicada a um produto que nao existe no carrinho
     // para cada regra um exemplo em que a regra nao é aplicada ( 4)
-    // um teste para o adicionar de produtos ao supermarket
     // um teste com adicionar e depois remover certos produtos ao supermarket
 
 }

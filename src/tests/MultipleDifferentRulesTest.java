@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by Nuno Maggiolly on 09-01-2017.
  */
-public class MultipleDiferentRulesTest extends SuperMarketTest {
+public class MultipleDifferentRulesTest extends SuperMarketTest {
 
     /*
      *    Rule 1 - buy 3 (equals) items and pay for 2

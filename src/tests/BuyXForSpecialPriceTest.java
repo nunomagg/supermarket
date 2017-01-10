@@ -59,9 +59,9 @@ public class BuyXForSpecialPriceTest extends SuperMarketTest {
     }
 
     /**
-     * In this test we will only buy one quantity of the Item that has the Buy X For Special price rule
+     * In this test we will only buy one unit of the Item that has the Buy X For Special price rule
      *
-     * The buy units needed for the promotion to be applied was also changed to 3, to test it's implementation
+     * The buy units needed for the promotion to be applied, was also changed to 3 to test it's implementation
      */
     @Test
     public void TwoDifferentItemsWithRuleAppliedToFirst(){

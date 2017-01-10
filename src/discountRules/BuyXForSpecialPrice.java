@@ -41,8 +41,8 @@ public class BuyXForSpecialPrice extends AbstractSingleSaleRule {
 
         if (IS_CUMULATIVE || !item.hasDiscountOrAllItemsUsedInDiscount()) {
             if (item.getAvailableQuantity() >= buyUnits) {
-                // the cast to int is used to get only the integer value of the operation
 
+                // the cast to int is used to get only the integer value of the operation
                 int quantityToRemove = (int) (item.getAvailableQuantity() * (((float)discountedUnits)/ ((float) buyUnits)));
                 int nrDiscountedProducts = Math.floorDiv(item.getAvailableQuantity(), buyUnits);
 
@@ -53,7 +53,6 @@ public class BuyXForSpecialPrice extends AbstractSingleSaleRule {
 
         return productsWithDiscount;
     }
-
 
 }
 
