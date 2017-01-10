@@ -1,10 +1,16 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import supermarket.Item;
 import supermarket.Product;
+import supermarket.ShoppingCart;
 import supermarket.SuperMarket;
 
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by Nuno Maggiolly on 08-01-2017.
@@ -46,9 +52,25 @@ public class SuperMarketTest {
         return market;
     }
 
+    /**
+     * There shouldn't be any product with 0 quantity
+     */
+    @Test
+    public void testProductsQuantities(List<Item> items){
+
+        if (items.size()>0){
+            for (Item item : items) {
+                assertTrue(item.getQuantity()>0,
+                        "Item with product "+item.getProduct().getName()+ " at "+item.calculatePrice()+" should not exist with 0 quantity");
+            }
+        }
+
+    }
+
     //comprar 3 mas em que 2 são de outro tipo de produto
     // 3 regras diferentes seguidas
     // para cada regra um exemplo em que a regra nao é aplicada ( 4)
     // um teste com adicionar e depois remover certos produtos ao supermarket
+
 
 }

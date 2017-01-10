@@ -1,13 +1,18 @@
 package tests;
 
+import discountRules.BuySetDontPayCheapest;
 import discountRules.BuyXForSpecialPrice;
 import discountRules.BuyXGetFreeUnits;
+import discountRules.BuyXGetYOtherItemsForFree;
 import org.junit.jupiter.api.Test;
 import supermarket.Item;
+import supermarket.Product;
 import supermarket.ShoppingCart;
 import supermarket.SuperMarket;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -138,4 +143,77 @@ public class MultipleDifferentRulesTest extends SuperMarketTest {
         market.printCart(itemsInCart);
     }
 
+
+    @Test
+    public void TestAllRules(){
+
+        int BANANA_QUANTITY = 3;
+        int APRICOT_QUANTITY = 2;
+        int APPLE_QUANTITY = 2;
+        int PINEAPPLE_QUANTITY = 1;
+        int BANANA_QUANTITY_2 = 5;
+        int STRAWBERRY_QUANTITY = 7;
+        int SUM_BANANA_QUANTITY = BANANA_QUANTITY + BANANA_QUANTITY_2;
+
+        //Expected results
+        int PEAR_FREE = 2;
+        int BANANA_FREE = 2;
+        int BANANA_HALF_PRICE = 1;
+        int BANANA_FULL_PRICE = SUM_BANANA_QUANTITY - BANANA_FREE - BANANA_HALF_PRICE;
+        int APRICOT_FULL_PRICE = 2;
+        int APPLE_FULL_PRICE = APPLE_QUANTITY;
+        int PINEAPPLE_FREE_PRICE = 1;
+        int STRAWBERRY_FULL_PRICE = 5;
+        int STRAWBERRY_HALF_PRICE = 2;
+
+
+        //Set - cheapest is Apple
+        Set<Product> first_set = new HashSet<>();
+        first_set.add(APPLE);
+        first_set.add(PINEAPPLE);
+        first_set.add(BANANA);
+
+        //Set - cheapest is pineapple
+        Set<Product> sec_set = new HashSet<>();
+        sec_set.add(STRAWBERRY);
+        sec_set.add(PINEAPPLE);
+        sec_set.add(APRICOT);
+
+        //1 .Rule 1
+        market.addDiscount(new BuyXGetFreeUnits(BANANA,3,1));
+        //after this there should only be 2 available bananas to use in other discounts
+
+        //2.
+        market.addDiscount(new BuyXForSpecialPrice(BANANA,2,1,50));
+
+        //3. Rule 2 - This rule wont be applied
+        market.addDiscount(new BuyXForSpecialPrice(STRAWBERRY,3,1, 50));
+
+        //4. Rule 3 - buy 3 (in a set of items) and the cheapest is free
+        //- This rule wont be applied
+        market.addDiscount(new BuySetDontPayCheapest(first_set));
+
+        //5.
+        market.addDiscount(new BuySetDontPayCheapest(sec_set));
+
+        //6.
+        market.addDiscount(new BuyXGetYOtherItemsForFree(APRICOT,1,PEAR,2));
+
+        ShoppingCart cart = new ShoppingCart();
+        cart.addToCart(BANANA, BANANA_QUANTITY);
+        cart.addToCart(APRICOT, APRICOT_QUANTITY);
+        cart.addToCart(APPLE, APPLE_QUANTITY);
+        cart.addToCart(PINEAPPLE, PINEAPPLE_QUANTITY);
+        cart.addToCart(BANANA, BANANA_QUANTITY_2);
+        cart.addToCart(STRAWBERRY, STRAWBERRY_QUANTITY);
+
+
+        //market.checkoutCart(cart);
+
+        List<Item> items = market.applyDiscount(cart);
+
+        testProductsQuantities(items);
+
+        market.printCart(items);
+    }
 }

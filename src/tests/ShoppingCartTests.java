@@ -162,4 +162,5 @@ public class ShoppingCartTests extends SuperMarketTest{
 
         market.printCart(cart.getItemsInCart().values());
     }
+
 }
