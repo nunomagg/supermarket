@@ -3,9 +3,7 @@ package tests;
 import discountRules.BuyXForSpecialPrice;
 import org.junit.jupiter.api.Test;
 import supermarket.Item;
-import supermarket.Product;
 import supermarket.ShoppingCart;
-import supermarket.SuperMarket;
 
 import java.util.List;
 
@@ -55,6 +53,50 @@ public class BuyXForSpecialPriceTest extends SuperMarketTest {
                 RESULT_HALF_PRICED_UNITS * STRAWBERRY.getPrice() * (DISCOUNT_PERCENT / 100);
 
         assertEquals(2*5 + 2*2.5, market.getFinalPrice(itemsInCart), "wrong final price");
+        assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
+
+        market.printCart(itemsInCart);
+    }
+
+    /**
+     * In this test we will only buy one quantity of the Item that has the Buy X For Special price rule
+     *
+     * The buy units needed for the promotion to be applied was also changed to 3, to test it's implementation
+     */
+    @Test
+    public void TwoDifferentItemsWithRuleAppliedToFirst(){
+
+        final float DISCOUNT_PERCENT = 50;
+        final int STRAWBERRY_QUANTITY_IN_CART = 2;
+        final int APRICOT_QUANTITY_IN_CART = 3;
+
+        //Buy 2 get one for Half price
+        market.addDiscount(new BuyXForSpecialPrice(STRAWBERRY,3,1, DISCOUNT_PERCENT));
+
+        ShoppingCart cart = new ShoppingCart();
+        cart.addToCart(STRAWBERRY,STRAWBERRY_QUANTITY_IN_CART);
+        cart.addToCart(APRICOT,APRICOT_QUANTITY_IN_CART);
+
+        List<Item> itemsInCart = market.applyDiscount(cart);
+
+        assertEquals (2,itemsInCart.size(),"There should be 2 items in cart ");
+
+        for (int i = 0; i < itemsInCart.size(); i++) {
+            Item item = itemsInCart.get(i);
+
+            //lower value
+            if (STRAWBERRY.equals(item.getProduct()) && item.calculatePrice() < item.getQuantity()*STRAWBERRY.getPrice()){
+                assertEquals (STRAWBERRY_QUANTITY_IN_CART,item.getQuantity(),"There should be "+STRAWBERRY_QUANTITY_IN_CART+" Strawberries for half price in the cart ");
+            }
+            else if (APRICOT.equals(item.getProduct()) && item.calculatePrice() == item.getQuantity()*STRAWBERRY.getPrice()){
+                assertEquals (APRICOT_QUANTITY_IN_CART,item.getQuantity(),"There should be "+APRICOT_QUANTITY_IN_CART+" full priced strawberries");
+            }
+        }
+
+        float finalPrice = STRAWBERRY_QUANTITY_IN_CART * STRAWBERRY.getPrice() +
+                APRICOT_QUANTITY_IN_CART * APRICOT.getPrice();
+
+        assertEquals(55.0, market.getFinalPrice(itemsInCart), "wrong final price");
         assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong final price");
 
         market.printCart(itemsInCart);

@@ -2,7 +2,7 @@ package run;
 
 import discountRules.BuySetDontPayCheapest;
 import discountRules.BuyXForSpecialPrice;
-import discountRules.BuyXGetAnotherForFree;
+import discountRules.BuyXGetFreeUnits;
 import discountRules.BuyXGetYOtherItemsForFree;
 import supermarket.Product;
 import supermarket.ShoppingCart;
@@ -34,7 +34,7 @@ public class Main {
 		applicable.add(market.getProduct(2));
 
 		//Regra 1
-		market.addDiscount(new BuyXGetAnotherForFree(market.getProduct(0),3,1));
+		market.addDiscount(new BuyXGetFreeUnits(market.getProduct(0),3,1));
 		market.addDiscount(new BuyXForSpecialPrice(market.getProduct(0),2,1,50));
 
 		//Regra 2

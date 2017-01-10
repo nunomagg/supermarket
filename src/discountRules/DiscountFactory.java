@@ -52,11 +52,30 @@ public class DiscountFactory {
         //Add non discounted products to the final list of items
         discountedProducts.addAll(checkoutItems.values());
 
+        //mergeEqualProductsWithSamePrice(discountedProducts)
+
         return discountedProducts;
     }
 
+    /**
+     *  This method is meant to keep the code for ordering the discount rules by its priority
+     *
+     *  TODO: missing implementation
+     */
     private void orderDiscountRules(){
-        //TODO: Missing order discount rules implementation
+        // Missing order discount rules implementation
+    }
+
+    /**
+     * Meant to merge all items that represent the same product with the same price
+     * This method should be implemented if the checkout receipt can't have the same product with the same price
+     * appearing more than once
+     *
+     * TODO: missing implementation
+     */
+    private List<Item> mergeEqualProductsWithSamePrice(List<Item> discountedProducts){
+        //missing implementation
+        return discountedProducts;
     }
 
 }

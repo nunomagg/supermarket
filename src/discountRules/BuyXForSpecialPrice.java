@@ -1,7 +1,8 @@
 package discountRules;
 
-import supermarket.Product;
+import run.Utils;
 import supermarket.Item;
+import supermarket.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +41,13 @@ public class BuyXForSpecialPrice extends AbstractSingleSaleRule {
 
         if (IS_CUMULATIVE || !item.hasDiscountOrAllItemsUsedInDiscount()) {
             if (item.getAvailableQuantity() >= buyUnits) {
-                int quantityToRemove = Math.floorDiv(item.getAvailableQuantity(), buyUnits);
-                item.removeQuantityOnDiscount(quantityToRemove, quantityToRemove * buyUnits);
-                productsWithDiscount.add(new Item(item.getProduct(), quantityToRemove * discountedUnits, specialPricePercentage));
+                // the cast to int is used to get only the integer value of the operation
+
+                int quantityToRemove = (int) (item.getAvailableQuantity() * (((float)discountedUnits)/ ((float) buyUnits)));
+                int nrDiscountedProducts = Math.floorDiv(item.getAvailableQuantity(), buyUnits);
+
+                item.removeQuantityOnDiscount(quantityToRemove, nrDiscountedProducts * buyUnits);
+                productsWithDiscount.add(new Item(item.getProduct(), nrDiscountedProducts * discountedUnits, specialPricePercentage));
             }
         }
 
