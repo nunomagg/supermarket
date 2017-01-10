@@ -1,0 +1,26 @@
+<plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+
+<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.0.0-M3</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.opentest4j/opentest4j -->
+<dependency>
+    <groupId>org.opentest4j</groupId>
+    <artifactId>opentest4j</artifactId>
+    <version>1.0.0-M1</version>
+</dependency>
