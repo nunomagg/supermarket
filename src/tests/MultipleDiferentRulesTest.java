@@ -12,9 +12,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Created by MariaMagg on 09-01-2017.
+ * Created by Nuno Maggiolly on 09-01-2017.
  */
 public class MultipleDiferentRulesTest extends SuperMarketTest {
+
+    /*
+     *    Rule 1 - buy 3 (equals) items and pay for 2
+     *    Rule 2 - buy 2 (equals) items for a special price
+     *    Rule 3 - buy 3 (in a set of items) and the cheapest is free
+     *    Rule 4 - for each N (equals) items X, you get K items Y for free
+     *
+     * */
+
 
     /**
      * This method tests the application of 2 rules against the same type of product

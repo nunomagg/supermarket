@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Created by MariaMagg on 09-01-2017.
+ * Created by Nuno Maggiolly on 09-01-2017.
  */
 public class BuyXForSpecialPriceTest extends SuperMarketTest {
 

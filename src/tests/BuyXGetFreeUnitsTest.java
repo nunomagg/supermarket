@@ -9,9 +9,10 @@ import supermarket.ShoppingCart;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Created by MariaMagg on 09-01-2017.
+ * Created by Nuno Maggiolly on 09-01-2017.
  */
 public class BuyXGetFreeUnitsTest extends SuperMarketTest{
 
@@ -81,8 +82,6 @@ public class BuyXGetFreeUnitsTest extends SuperMarketTest{
         float EXPECTED_FREE_APPLES = APPLE_RULE_FREE_UNITS * Math.floorDiv(APPLE_QUANTITY, APPLE_RULE_BUY_UNITS);
         int EXPECTED_FULL_PRICE_APPLES = Utils.getIntOfRoundedValue(APPLE_QUANTITY * (APPLE_RULE_FREE_UNITS / EXPECTED_FREE_APPLES));
 
-        System.out.println(EXPECTED_FULL_PRICE_APPLES);
-
         //buy 3 get 1 for free
         market.addDiscount(new BuyXGetFreeUnits(BANANA,5,2));
         //buy 6 get 1 for free
@@ -125,4 +124,39 @@ public class BuyXGetFreeUnitsTest extends SuperMarketTest{
         market.printCart(itemsInCart);
     }
 
+
+    /**
+     * buy 3 (equals) items and pay for 2,  applied to STRAWBERRY products but the cart only contains Bananas
+     *
+     */
+    @Test
+    public void getFreeUnitsRuleNotApplied(){
+
+        int BANANA_QUANTITY = 6;
+
+        //buy 3 get 1 for free
+        market.addDiscount(new BuyXGetFreeUnits(STRAWBERRY,3,1));
+
+        ShoppingCart cart = new ShoppingCart();
+        cart.addToCart(BANANA,BANANA_QUANTITY);
+
+        List<Item> itemsInCart = market.applyDiscount(cart);
+
+        assertEquals (1,itemsInCart.size(),"There should be 1 item banana in cart ");
+
+        for (int i = 0; i < itemsInCart.size(); i++) {
+            Item item = itemsInCart.get(i);
+
+            if (BANANA.equals(item.getProduct())){
+                assertEquals (BANANA_QUANTITY,item.getQuantity(),"There should be "+BANANA_QUANTITY+"quantities of banana in the cart ");
+            }
+            assertTrue(BANANA.equals(item.getProduct()), "There should only be bananas in the cart");
+        }
+
+        float finalPrice =  BANANA_QUANTITY * BANANA.getPrice();
+
+        assertEquals(finalPrice, market.getFinalPrice(itemsInCart), "wrong full price");
+
+        market.printCart(itemsInCart);
+    }
 }

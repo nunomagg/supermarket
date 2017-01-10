@@ -1,7 +1,10 @@
 package tests;
 
+import org.junit.jupiter.api.Test;
 import supermarket.Product;
 import supermarket.SuperMarket;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by Nuno Maggiolly on 08-01-2017.
@@ -21,6 +24,7 @@ public class SuperMarketTest {
     final Product WATERMELON = market.getProduct(8);
     final Product CLEMENTINE = market.getProduct(9);
 
+    @Test
     protected SuperMarket getSuperMarketWithProducts (){
 
         SuperMarket market = new SuperMarket();
@@ -37,18 +41,19 @@ public class SuperMarketTest {
         market.addProduct("Watermelon", 10); //8
         market.addProduct("Clementine", 8); //9
 
+        assertEquals(10,market.numberOfExistingProducts(), "should exist 10 products in the market");
+
         return market;
     }
 
 
+
+
     //comprar 3 mas em que 2 são de outro tipo de produto
-    // 3 regras seguidas
+    // 3 regras diferentes seguidas
     // um em que tem a regra aplicada a um produto que nao existe no carrinho
     // para cada regra um exemplo em que a regra nao é aplicada ( 4)
-    // um carrinho com varios produtos adicionados por ordem aleatoria e repetida e com várias regras
     // um teste para o adicionar de produtos ao supermarket
-    // um teste para o adicionar de produtos ao carrinho
     // um teste com adicionar e depois remover certos produtos ao supermarket
-    // um teste com adicionar e depois remover certos produtos ao carrinho
 
 }

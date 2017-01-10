@@ -27,10 +27,12 @@ public class ShoppingCart {
     }
 
     public void removeFromCart(Product p, int quantity) {
+
         if (itemsInCart.containsKey(p)) {
-            if (itemsInCart.get(p).getQuantity() == quantity) {
+            if (itemsInCart.get(p).getQuantity() <= quantity) {
                 itemsInCart.remove(p);
             } else {
+
                 itemsInCart.get(p).removeQuantity(quantity);
             }
         }

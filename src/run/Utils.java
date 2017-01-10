@@ -1,7 +1,7 @@
 package run;
 
 /**
- * Created by MariaMagg on 10-01-2017.
+ * Created by Nuno Maggiolly on 10-01-2017.
  */
 public class Utils {
 

@@ -33,6 +33,8 @@ public class SuperMarket {
         return productById.get(id);
     }
 
+    public int numberOfExistingProducts(){return productById.size();}
+
     public void addDiscount(SaleRule discount) {
         discountFactory.addSalesRule(discount);
     }
@@ -53,7 +55,7 @@ public class SuperMarket {
         System.out.println(sb.toString());
     }
 
-    public void printCart(List<Item> items) {
+    public void printCart(Collection<Item> items) {
         StringBuilder sb = new StringBuilder();
         float finalPrice = 0;
 
